@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.domain.taskManager.dto.TaskRequestDTO;
@@ -33,6 +35,9 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public Page<Task> getAllTasks(Pageable pageable) {
+        return taskRepository.findAll(pageable);
+    }
     // Get a single task
     public Optional<Task> getTaskById(Long id) {
         return taskRepository.findById(id);
